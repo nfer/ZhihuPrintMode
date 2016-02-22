@@ -10,11 +10,18 @@
     "js": ["js/jquery-2.1.4.min.js", "js/content_action.js"]
   }],
 
+  "background": {
+      "persistent": false,
+      "scripts": ["js/background.js"]
+  },
+
   "permissions": [
-    "https://*.zhihu.com/*"
+    "https://*.zhihu.com/*",
+    "contextMenus"
   ],
 
   "icons" : {
+    "16" : "icon/16.png",
     "48" : "icon/48.png",
     "128" : "icon/128.png"
   }
