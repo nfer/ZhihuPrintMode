@@ -14,5 +14,5 @@ chrome.contextMenus.onClicked.addListener(function(info, tab) {
 
 // Set up context menu tree at install time.
 chrome.runtime.onInstalled.addListener(function() {
-    chrome.contextMenus.create({"title": "知乎打印模式", "contexts":["page"], "id": "zhihuprint-context-page", "documentUrlPatterns":["https://*.zhihu.com/*"]});
+    chrome.contextMenus.create({"title": "知乎打印模式", "contexts":["page"], "id": "zhihuprint-context-page", "documentUrlPatterns":["*://*.zhihu.com/*"]});
 });
