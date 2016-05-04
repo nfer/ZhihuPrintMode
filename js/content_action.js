@@ -1,5 +1,5 @@
 
-function hideElement () {
+function hideWWWElement () {
     // hide topbar
     $(".zu-top").hide();
     $(".zu-global-notify").hide();
@@ -19,8 +19,33 @@ function hideElement () {
     $(".zh-answers-title").hide();
 }
 
+function hideZhuanLanElement () {
+    console.log('hideZhuanLanElement')
+    // hide header-holder
+    $("#header-holder").hide();
+
+    // hide included-pc
+    $(".included-pc").hide();
+
+    // hide recommend-posts
+    $(".recommend-posts").hide();
+
+    // hide comment-box
+    $(".comment-box").hide();
+
+    // hide entry-controls
+    $(".entry-controls").hide();
+
+    // remove full-screen-cover
+    $(".full-screen-cover").removeClass("full-screen-cover");
+
+}
+
 chrome.extension.onMessage.addListener(function (message, sender, callback) {
-    if (message.functiontoInvoke == "hideElement") {
-        hideElement();
+    if (message.functiontoInvoke == "hideWWWElement") {
+        hideWWWElement();
+    }
+    else if (message.functiontoInvoke == "hideZhuanLanElement") {
+        hideZhuanLanElement();
     }
 });
