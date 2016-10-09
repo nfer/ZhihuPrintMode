@@ -17,6 +17,10 @@ function hideWWWElement () {
     $(".more-awesome").hide();
     $(".awesome-answer-list").hide();
     $(".zh-answers-title").hide();
+
+    // replace multi break line to one break line
+    var $zm_editable_content = $("div.zm-item-answer div.zm-item-rich-text .zm-editable-content");
+    $zm_editable_content.html( $zm_editable_content.html().replace(/<br><br>(<br>)+/g, "<br><br>") );
 }
 
 function hideZhuanLanElement () {
@@ -39,6 +43,9 @@ function hideZhuanLanElement () {
     // remove full-screen-cover
     $(".full-screen-cover").removeClass("full-screen-cover");
 
+    // replace multi break line to one break line
+    var $zm_editable_content = $("div.zm-item-answer div.zm-item-rich-text .zm-editable-content");
+    $zm_editable_content.html( $zm_editable_content.html().replace(/<br><br>(<br>)+/g, "<br><br>") );
 }
 
 chrome.extension.onMessage.addListener(function (message, sender, callback) {
