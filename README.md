@@ -10,7 +10,10 @@
  - 投票按钮：zm-votebar
  - 注释部分：zm-item-comment-el
  - 更多回答：more-awesome、awesome-answer-list、zh-answers-title
- 
+
+增加：
+[可否将多行空行删减为一行啊，空行太多的浪费纸张啊](https://github.com/nfer/ZhihuPrintMode/issues/1)
+
 ## 如果使用
 
 因为该扩展并没有上传到chrome的应用商店，因此只能自行下载下来并使用开发者模式加载，具体步骤如下：
