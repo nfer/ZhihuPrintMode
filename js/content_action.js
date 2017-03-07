@@ -1,22 +1,22 @@
 
 function hideWWWElement () {
-    // hide topbar
-    $(".zu-top").hide();
-    $(".zu-global-notify").hide();
+    // remove topbar
+    $(".zu-top").remove();
+    $(".zu-global-notify").remove();
 
-    // hide slidebar
-    $(".zu-main-sidebar").hide();
+    // remove slidebar
+    $(".zu-main-sidebar").remove();
 
-    // hide votebar
-    $(".zm-votebar").hide();
+    // remove votebar
+    $(".zm-votebar").remove();
 
-    // hide comment
-    $(".zm-item-comment-el").hide();
+    // remove comment
+    $(".zm-item-comment-el").remove();
 
-    // hide more answer
-    $(".more-awesome").hide();
-    $(".awesome-answer-list").hide();
-    $(".zh-answers-title").hide();
+    // remove more answer
+    $(".more-awesome").remove();
+    $(".awesome-answer-list").remove();
+    $(".zh-answers-title").remove();
 
     // replace multi break line to one break line
     var $zm_editable_content = $("div.zm-item-answer div.zm-item-rich-text .zm-editable-content");
@@ -25,20 +25,20 @@ function hideWWWElement () {
 
 function hideZhuanLanElement () {
     console.log('hideZhuanLanElement')
-    // hide header-holder
-    $("#header-holder").hide();
+    // remove header-holder
+    $("#header-holder").remove();
 
-    // hide included-pc
-    $(".included-pc").hide();
+    // remove included-pc
+    $(".included-pc").remove();
 
-    // hide recommend-posts
-    $(".recommend-posts").hide();
+    // remove recommend-posts
+    $(".recommend-posts").remove();
 
-    // hide comment-box
-    $(".comment-box").hide();
+    // remove comment-box
+    $(".comment-box").remove();
 
-    // hide entry-controls
-    $(".entry-controls").hide();
+    // remove entry-controls
+    $(".entry-controls").remove();
 
     // remove full-screen-cover
     $(".full-screen-cover").removeClass("full-screen-cover");
