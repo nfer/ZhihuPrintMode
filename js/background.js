@@ -6,7 +6,7 @@ chrome.contextMenus.onClicked.addListener(function(info, tab) {
         "currentWindow": true
     }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, {
-            "functiontoInvoke": "hideWWWElement"
+            "functiontoInvoke": "removeWWWElement"
         });
     });
   }
@@ -16,7 +16,7 @@ chrome.contextMenus.onClicked.addListener(function(info, tab) {
         "currentWindow": true
     }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, {
-            "functiontoInvoke": "hideZhuanLanElement"
+            "functiontoInvoke": "removeZhuanLanElement"
         });
     });
   }
