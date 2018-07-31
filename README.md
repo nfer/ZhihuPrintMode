@@ -3,17 +3,6 @@
 ## 简介
 在打印知乎回答的时候，会有一些不需要打印的内容，该扩展就是用来去掉这些内容的。
 
-隐藏的信息包括：
-
- - 顶部菜单：zu-top和zu-global-notify
- - 边栏：zu-main-sidebar
- - 投票按钮：zm-votebar
- - 注释部分：zm-item-comment-el
- - 更多回答：more-awesome、awesome-answer-list、zh-answers-title
-
-增加：
-[可否将多行空行删减为一行啊，空行太多的浪费纸张啊](https://github.com/nfer/ZhihuPrintMode/issues/1)
-
 ## 使用
 
  - 打开需要打印的页面

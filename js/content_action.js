@@ -1,115 +1,72 @@
+function removeAnswerElement() {
+    // 删除头部
+    $('header').remove()
+    // 删除边栏
+    $('.Question-sideColumn').remove()
+    // 调整主栏的宽度
+    $('.Question-mainColumn').css('width', '100%');
+    // 删除更多回答部分
+    $('.Card.MoreAnswers').remove()
+    // 删除查看全部回答
+    $('[data-za-detail-view-path-module="MessageItem"]').remove()
+    // 删除问题的操作部分(fix在底部，打印的时候每页都会存在)
+    $('.ContentItem-actions').remove()
+    // 删除右下角的按钮
+    $('.CornerButtons').remove()
 
-function removeWWWElement () {
-    $('body').css('padding-top', '0')
-    $('body').css('padding-bottom', '0')
-    $('#zh-question-answer-wrap').css('padding-top', '40px')
-
-    // -------------------global elements------------------- //
-    // remove topbar
-    removeElement('.zu-top')
-    removeElement('.zu-global-notify')
-
-    // remove slidebar
-    removeElement('.zu-main-sidebar')
-
-    // remove footer
-    removeElement('.zh-footer')
-
-    // remove feedback button
-    removeElement('.FeedbackButton-button-3waL')
-
-    // remove answers title
-    removeElement('.zh-answers-title')
-
-    // remove not the first answer(in /question/xxx page)
-    removeElement('.zm-item-answer:gt(0)')
-
-    // remove more answers button(in /question/xxx page)
-    removeElement('.zu-button-more')
-
-    // remove more answer tip(in /question/xxx/answer/xxx page)
-    removeElement('.more-awesome')
-
-    // remove more answers(in /question/xxx/answer/xxx page)
-    removeElement('.awesome-answer-list')
-
-    // remove collap answers
-    removeElement('.zu-question-collap-title')
-
-    // remove answer wrap
-    removeElement('.zh-question-answer-form-wrap')
-    // -------------------global elements------------------- //
-
-    // -------------------question elements----------------- //
-    // remove question edit button
-    removeElement('.zu-edit-button')
-
-    // remove question editable tip
-    removeElement('.zm-editable-tip')
-
-    // remove question comment
-    removeElement('.zm-item-comment-el')
-    // -------------------question elements----------------- //
-
-    // -------------------answer elements------------------- //
-    // remove votebar
-    removeElement('.zm-votebar')
-
-    // remove user avatar
-    removeElement('.zm-item-link-avatar')
-
-    // remove vote info
-    removeElement('.zm-item-vote-info')
-
-    // remove zm-meta-panel except answer-date-link
-    removeElement('.zm-meta-panel *:gt(0)')
-
-    // remove answer comment
-    removeElement('.comment-app-holder')
-    // -------------------answer elements------------------- //
-
-    // replace multi break line to one break line
-    var $zm_editable_content = $("div.zm-item-answer div.zm-item-rich-text .zm-editable-content");
-    $zm_editable_content.html( $zm_editable_content.html().replace(/<br><br>(<br>)+/g, "<br><br>") );
+    // 单独调整一下图片
+    $('.ztext figure .origin_image').css('margin', 0);
 }
 
-function removeZhuanLanElement () {
-    // remove header-holder
-    $("#header-holder").remove();
+function removeQuestionElement() {
+    // 先禁止滚动加载
+    window.addEventListener('scroll', function (event) {
+        event.stopPropagation();
+    }, true);
+    // 然后删除非首个回答
+    $('.List-item').not(':first').remove()
 
-    // remove included-pc
-    $(".included-pc").remove();
+    // 删除头部
+    $('header').remove()
+    // 删除边栏
+    $('.Question-sideColumn').remove()
+    // 调整主栏的宽度
+    $('.Question-mainColumn').css('width', '100%');
+    // 删除右下角的按钮
+    $('.CornerButtons').remove()
+    // 删除回答的头部，e.g. “243个回答/默认排序...”
+    $('.List-header').remove()
+    // 删除问题的操作部分(fix在底部，打印的时候每页都会存在)
+    $('.ContentItem-actions').remove()
 
-    // remove recommend-posts
-    $(".recommend-posts").remove();
-
-    // remove comment-box
-    $(".comment-box").remove();
-
-    // remove entry-controls
-    $(".entry-controls").remove();
-
-    // remove full-screen-cover
-    $(".full-screen-cover").removeClass("full-screen-cover");
-
-    // replace multi break line to one break line
-    var $zm_editable_content = $("div.zm-item-answer div.zm-item-rich-text .zm-editable-content");
-    $zm_editable_content.html( $zm_editable_content.html().replace(/<br><br>(<br>)+/g, "<br><br>") );
+    // 单独调整一下图片
+    $('.ztext figure .origin_image').css('margin', 0);
 }
 
-function removeElement(selector) {
-    $element = $(selector)
-    if ($element.length) {
-        console.log('remove element with selector:', selector)
-        $element.remove()
-    }
+function removeZhuanLanElement() {
+    // 删除头部
+    $('.ColumnPageHeader-Wrapper').remove()
+    // 删除推荐阅读
+    $('.Recommendations-Main').remove()
+    // 删除评论
+    $('.Comments-container').remove()
+    // 删除问题的操作部分(fix在底部，打印的时候每页都会存在)
+    $('.RichContent-actions').remove()
+    // 删除“文章被以下专栏收录”
+    $('.PostIndex-Contributes').remove()
+
+    // 删除右下角的按钮
+    $('.CornerButtons').remove()
 }
 
 chrome.extension.onMessage.addListener(function (message, sender, callback) {
-    if (message.functiontoInvoke == "removeWWWElement") {
-        removeWWWElement();
-    }
-    else if (message.functiontoInvoke == "removeZhuanLanElement") {
+    if (message.type == "answer") {
+        removeAnswerElement();
+    } else if (message.type == "question") {
+        removeQuestionElement();
+    } else if (message.type == "zhuanlan") {
         removeZhuanLanElement();
+    } else {
+        alert('该页面暂不支持打印模式')
     }
 });
