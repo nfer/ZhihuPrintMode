@@ -59,6 +59,39 @@ function removeZhuanLanElement() {
     $('.CornerButtons').remove()
 }
 
+function removeJianshuWWWElement () {
+    removeElement('#note-fixed-ad-container')
+    removeElement('#free-reward-panel')
+    removeElement('.show-foot')
+    removeElement('.meta-bottom')
+    removeElement('.follow-detail')
+    removeElement('#web-note-ad-1')
+    removeElement('#comment-list')
+    removeElement('.note-bottom')
+    removeElement('.side-tool')
+
+    var css = document.createElement('style');
+    css.textContent = `
+    .note .post {
+        width: 1024px;
+    }
+    @media print {
+        a[href]:after {
+            content: ""
+        }
+    }
+    `
+    document.head.appendChild(css);
+}
+
+function removeElement(selector) {
+    $element = $(selector)
+    if ($element.length) {
+        console.log('remove element with selector:', selector)
+        $element.remove()
+    }
+}
+
 chrome.extension.onMessage.addListener(function (message, sender, callback) {
     if (message.type == "answer") {
         removeAnswerElement();
@@ -66,6 +99,8 @@ chrome.extension.onMessage.addListener(function (message, sender, callback) {
         removeQuestionElement();
     } else if (message.type == "zhuanlan") {
         removeZhuanLanElement();
+    } else if (message.type == "jianshu") {
+        removeJianshuWWWElement();
     } else {
         alert('该页面暂不支持打印模式')
     }

@@ -1,12 +1,12 @@
 {
   "manifest_version": 2,
 
-  "name": "知乎打印模式",
+  "name": "打印视图模式",
   "description": "隐藏不需要打印的内容",
-  "version": "2.0",
+  "version": "2.1",
 
   "content_scripts": [{
-    "matches": ["*://*.zhihu.com/*"],
+    "matches": ["*://*.zhihu.com/*", "*://*.jianshu.com/*"],
     "js": ["js/jquery-2.1.4.min.js", "js/content_action.js"]
   }],
 
@@ -17,6 +17,7 @@
 
   "permissions": [
     "*://*.zhihu.com/*",
+    "*://*.jianshu.com/*",
     "contextMenus"
   ],
 
