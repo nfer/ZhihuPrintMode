@@ -84,6 +84,16 @@ function removeJianshuWWWElement () {
     document.head.appendChild(css);
 }
 
+function removeSegmentfaultWWWElement () {
+    removeElement('#footer')
+    removeElement('.global-nav')
+    removeElement('#paradigm-article-related')
+    removeElement('.comments--article')
+    removeElement('.main > h4:contains("你可能感兴趣的")')
+    removeElement('.main > div:has("#mainLike")')
+    removeElement('.main > div:has(".article-operation")')
+}
+
 function removeElement(selector) {
     $element = $(selector)
     if ($element.length) {
@@ -101,6 +111,8 @@ chrome.extension.onMessage.addListener(function (message, sender, callback) {
         removeZhuanLanElement();
     } else if (message.type == "jianshu") {
         removeJianshuWWWElement();
+    } else if (message.type == "segmentfault") {
+        removeSegmentfaultWWWElement();
     } else {
         alert('该页面暂不支持打印模式')
     }

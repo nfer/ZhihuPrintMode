@@ -3,10 +3,10 @@
 
   "name": "打印视图模式",
   "description": "隐藏不需要打印的内容",
-  "version": "2.1",
+  "version": "2.2",
 
   "content_scripts": [{
-    "matches": ["*://*.zhihu.com/*", "*://*.jianshu.com/*"],
+    "matches": ["*://*.zhihu.com/*", "*://*.jianshu.com/*", "*://segmentfault.com/*"],
     "js": ["js/jquery-2.1.4.min.js", "js/content_action.js"]
   }],
 
@@ -18,6 +18,7 @@
   "permissions": [
     "*://*.zhihu.com/*",
     "*://*.jianshu.com/*",
+    "*://segmentfault.com/*",
     "contextMenus"
   ],
 
