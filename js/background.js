@@ -2,6 +2,7 @@ function handlePrint(info, tab) {
     var isZhuanlan = /^http(s)?:\/\/zhuanlan/;
     var isAnswer = /.*\/question\/[0-9]*\/answer\/[0-9]*$/;
     var isQuestion = /.*\/question\/[0-9]*$/;
+    var isJianshu = /.*jianshu.com.*/;
     var message = {
         type: 'none'
     };
@@ -18,6 +19,10 @@ function handlePrint(info, tab) {
         message = {
             type: 'question'
         };
+    } else if (isJianshu.test(info.pageUrl)) {
+        message = {
+            type: 'jianshu'
+        };
     } else {
         // do nothing
     }
@@ -31,7 +36,7 @@ function handlePrint(info, tab) {
 }
 
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
-    if (info.menuItemId == "zhihuprint-context") {
+    if (info.menuItemId == "print-context") {
         handlePrint(info, tab)
     }
 });
@@ -39,9 +44,9 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
 // Set up context menu tree at install time.
 chrome.runtime.onInstalled.addListener(function () {
     chrome.contextMenus.create({
-        "title": "知乎打印模式",
+        "title": "打印视图模式",
         "contexts": ["page"],
-        "id": "zhihuprint-context",
-        "documentUrlPatterns": ["*://*.zhihu.com/*"]
+        "id": "print-context",
+        "documentUrlPatterns": ["*://*.zhihu.com/*", "*://*.jianshu.com/*"]
     });
 });
