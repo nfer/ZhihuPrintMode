@@ -6,7 +6,12 @@
   "version": "2.2",
 
   "content_scripts": [{
-    "matches": ["*://*.zhihu.com/*", "*://*.jianshu.com/*", "*://segmentfault.com/*"],
+    "matches": [
+      "*://*.zhihu.com/*",
+      "*://*.jianshu.com/*",
+      "*://segmentfault.com/*",
+      "*://www.ruanyifeng.com/*"
+    ],
     "js": ["js/jquery-2.1.4.min.js", "js/content_action.js"]
   }],
 
@@ -19,6 +24,7 @@
     "*://*.zhihu.com/*",
     "*://*.jianshu.com/*",
     "*://segmentfault.com/*",
+    "*://www.ruanyifeng.com/*",
     "contextMenus"
   ],
 

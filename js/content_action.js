@@ -94,6 +94,17 @@ function removeSegmentfaultWWWElement () {
     removeElement('.main > div:has(".article-operation")')
 }
 
+function removeRuanyifengWWWElement () {
+    removeElement('#header')
+    removeElement('.asset-header')
+    removeElement('.entry-sponsor')
+    removeElement('.asset-footer')
+    removeElement('#related_entries')
+    removeElement('#cre')
+    removeElement('#comments')
+    removeElement('#footer')
+}
+
 function removeElement(selector) {
     $element = $(selector)
     if ($element.length) {
@@ -113,6 +124,8 @@ chrome.extension.onMessage.addListener(function (message, sender, callback) {
         removeJianshuWWWElement();
     } else if (message.type == "segmentfault") {
         removeSegmentfaultWWWElement();
+    } else if (message.type == "ruanyifeng") {
+        removeRuanyifengWWWElement();
     } else {
         alert('该页面暂不支持打印模式')
     }

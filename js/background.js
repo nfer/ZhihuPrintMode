@@ -4,6 +4,7 @@ function handlePrint(info, tab) {
     var isQuestion = /.*\/question\/[0-9]*$/;
     var isJianshu = /.*jianshu.com.*/;
     var isSegmentfault = /.*segmentfault.com.*/;
+    var isRuanyifeng = /.*ruanyifeng.com.*/;
     var message = {
         type: 'none'
     };
@@ -27,6 +28,10 @@ function handlePrint(info, tab) {
     } else if (isSegmentfault.test(info.pageUrl)) {
         message = {
             type: 'segmentfault'
+        };
+    } else if (isRuanyifeng.test(info.pageUrl)) {
+        message = {
+            type: 'ruanyifeng'
         };
     } else {
         // do nothing
@@ -52,6 +57,11 @@ chrome.runtime.onInstalled.addListener(function () {
         "title": "打印视图模式",
         "contexts": ["page"],
         "id": "print-context",
-        "documentUrlPatterns": ["*://*.zhihu.com/*", "*://*.jianshu.com/*", "*://segmentfault.com/*"]
+        "documentUrlPatterns": [
+            "*://*.zhihu.com/*",
+            "*://*.jianshu.com/*",
+            "*://segmentfault.com/*",
+            "*://*.ruanyifeng.com/*",
+        ]
     });
 });
